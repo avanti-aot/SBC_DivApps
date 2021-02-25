@@ -1,15 +1,12 @@
 # base image
 FROM node:12.2.0-alpine as build-stage
 
-# set working directory
-WORKDIR /app
-
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 ENV GITHUB-URL=${REPO-URL}
 
-RUN echo GITHUB-URL
-RUN echo ${GITHUB-URL}
+# set working directory
+WORKDIR /app
 
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
