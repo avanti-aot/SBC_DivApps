@@ -8,6 +8,9 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 ENV GITHUB-URL "$REPO-URL"
 
+RUN echo GITHUB-URL
+RUN echo $GITHUB-URL
+
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
