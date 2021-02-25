@@ -9,13 +9,13 @@ ENV PATH /app/node_modules/.bin:$PATH
 ENV GITHUB-URL $REPO-URL
 
 RUN echo GITHUB-URL
-RUN echo $GITHUB-URL
+RUN echo ${GITHUB-URL}
 
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
 # Clone code
-RUN git clone -b v4.0.0-alpha GITHUB-URL /web/
+RUN git clone -b v4.0.0-alpha ${GITHUB-URL} /web/
 
 RUN cp -rf /web/forms-flow-web/* /app/
 RUN rm /app/public/formsflow.ai_icon.svg
