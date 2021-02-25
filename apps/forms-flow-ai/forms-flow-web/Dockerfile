@@ -3,8 +3,6 @@ FROM node:12.2.0-alpine as build-stage
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
-ENV REPOURL=${REPOURL}
-ENV REPOBRANCH=${REPOBRANCH}
 
 RUN echo ${REPOURL}
 RUN echo ${REPOBRANCH}
