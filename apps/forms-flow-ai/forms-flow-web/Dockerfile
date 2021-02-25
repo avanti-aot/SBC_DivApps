@@ -6,6 +6,9 @@ ENV PATH /app/node_modules/.bin:$PATH
 ENV REPOURL=${REPOURL}
 ENV REPOBRANCH=${REPOBRANCH}
 
+RUN echo ${REPOURL}
+RUN echo ${REPOBRANCH}
+
 # set working directory
 WORKDIR /app
 
