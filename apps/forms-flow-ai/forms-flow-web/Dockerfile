@@ -3,7 +3,6 @@ FROM node:12.2.0-alpine as build-stage
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
-ENV GITHUBURL=${REPOURL}
 
 # set working directory
 WORKDIR /app
@@ -12,8 +11,7 @@ RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
 # Clone code
-RUN git clone -b v4.0.0-alpha ${REPOURL} /web/
-RUN git clone -b v4.0.0-alpha ${GITHUBURL} /web/
+RUN git clone -b ${REPOBRANCH} ${REPOURL} /web/
 
 RUN cp -rf /web/forms-flow-web/* /app/
 RUN rm /app/public/formsflow.ai_icon.svg
